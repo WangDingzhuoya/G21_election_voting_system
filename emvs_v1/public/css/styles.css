@@ -1,0 +1,1383 @@
+/* ============================================================
+   EMVS - Shared Stylesheet
+   Election Management and Voting System
+   Written with plain CSS for a first-year web course.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. Color and size variables
+   All colors used in this site are defined here first.
+   ------------------------------------------------------------ */
+:root {
+    --color-paper: #f5f2ea;
+    --color-card: #ffffff;
+    --color-ink: #23282d;
+    --color-ink-soft: #5b656c;
+    --color-green: #2e5e4e;
+    --color-green-dark: #234a3d;
+    --color-green-soft: #e4ede8;
+    --color-border: #d8d2c4;
+    --color-gold: #b98a2f;
+    --color-gold-soft: #f4ead4;
+    --color-danger: #a13d3d;
+    --color-danger-soft: #f6e4e4;
+    --color-info: #2f5570;
+    --color-info-soft: #e2ecf3;
+    --color-shadow: rgba(35, 40, 45, 0.12);
+
+    --font-display: Georgia, "Times New Roman", serif;
+    --font-body: "Segoe UI", Arial, Helvetica, sans-serif;
+
+    --size-small: 0.875rem;
+    --size-normal: 1rem;
+    --size-medium: 1.125rem;
+    --size-large: 1.5rem;
+    --size-xlarge: 2rem;
+    --size-huge: 2.75rem;
+
+    --radius-small: 6px;
+    --radius-medium: 10px;
+    --radius-large: 16px;
+
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --space-7: 48px;
+    --space-8: 64px;
+}
+
+/* ------------------------------------------------------------
+   2. Basic reset
+   These rules remove small browser differences.
+   ------------------------------------------------------------ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--size-normal);
+    line-height: 1.6;
+    color: var(--color-ink);
+    background-color: var(--color-paper);
+    min-height: 100vh;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+/* ------------------------------------------------------------
+   3. Basic typography
+   ------------------------------------------------------------ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--color-ink);
+}
+
+h1 {
+    font-size: var(--size-huge);
+}
+
+h2 {
+    font-size: var(--size-xlarge);
+}
+
+h3 {
+    font-size: var(--size-large);
+}
+
+h4 {
+    font-size: var(--size-medium);
+}
+
+p {
+    margin-bottom: var(--space-4);
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+a {
+    color: var(--color-green);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+small {
+    font-size: var(--size-small);
+    color: var(--color-ink-soft);
+}
+
+strong {
+    font-weight: 700;
+}
+
+.text-muted {
+    color: var(--color-ink-soft);
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* ------------------------------------------------------------
+   4. Page layout helpers
+   ------------------------------------------------------------ */
+.container {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding-left: var(--space-5);
+    padding-right: var(--space-5);
+}
+
+.section {
+    padding-top: var(--space-7);
+    padding-bottom: var(--space-7);
+}
+
+.section-title {
+    font-size: var(--size-xlarge);
+    margin-bottom: var(--space-3);
+}
+
+.section-subtitle {
+    color: var(--color-ink-soft);
+    max-width: 640px;
+    margin-bottom: var(--space-6);
+}
+
+.grid {
+    display: grid;
+    gap: var(--space-5);
+}
+
+.grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.flex-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+}
+
+/* ------------------------------------------------------------
+   5. Site header and navigation
+   ------------------------------------------------------------ */
+.site-header {
+    background-color: var(--color-green);
+    color: var(--color-card);
+    border-bottom: 4px solid var(--color-gold);
+}
+
+.site-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
+    min-height: 76px;
+    padding-top: var(--space-3);
+    padding-bottom: var(--space-3);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--color-card);
+    text-decoration: none;
+}
+
+.brand:hover {
+    text-decoration: none;
+}
+
+.brand-title {
+    font-family: var(--font-display);
+    font-size: var(--size-large);
+    color: var(--color-card);
+    line-height: 1.1;
+}
+
+.brand-sub {
+    font-size: var(--size-small);
+    color: var(--color-green-soft);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Round seal mark built only with CSS circles */
+.seal {
+    width: 46px;
+    height: 46px;
+    border: 2px solid var(--color-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    letter-spacing: 1px;
+    flex-shrink: 0;
+}
+
+.site-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    display: inline-block;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-small);
+    color: var(--color-green-soft);
+    font-size: var(--size-small);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.14);
+    color: var(--color-card);
+    text-decoration: none;
+}
+
+.nav-link.active {
+    background-color: var(--color-card);
+    color: var(--color-green);
+}
+
+/* ------------------------------------------------------------
+   6. Buttons
+   ------------------------------------------------------------ */
+.btn {
+    display: inline-block;
+    padding: 12px 22px;
+    border: 2px solid transparent;
+    border-radius: var(--radius-small);
+    font-family: var(--font-body);
+    font-size: var(--size-normal);
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn:hover {
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--color-green);
+    color: var(--color-card);
+    border-color: var(--color-green);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-green-dark);
+    border-color: var(--color-green-dark);
+    color: var(--color-card);
+}
+
+.btn-secondary {
+    background-color: var(--color-gold);
+    color: var(--color-card);
+    border-color: var(--color-gold);
+}
+
+.btn-secondary:hover {
+    background-color: #9c7425;
+    border-color: #9c7425;
+    color: var(--color-card);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-green);
+    border-color: var(--color-green);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-green);
+    color: var(--color-card);
+}
+
+.btn-light {
+    background-color: var(--color-card);
+    color: var(--color-green);
+    border-color: var(--color-card);
+}
+
+.btn-light:hover {
+    background-color: var(--color-green-soft);
+    border-color: var(--color-green-soft);
+    color: var(--color-green);
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.btn-small {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--size-small);
+}
+
+.btn-row {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+}
+
+/* ------------------------------------------------------------
+   7. Cards and panels
+   ------------------------------------------------------------ */
+.card {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    box-shadow: 0 4px 14px var(--color-shadow);
+    overflow: hidden;
+}
+
+.card-header {
+    padding: var(--space-4) var(--space-5);
+    border-bottom: 1px solid var(--color-border);
+    background-color: #fbfaf6;
+}
+
+.card-body {
+    padding: var(--space-5);
+}
+
+.card-footer {
+    padding: var(--space-4) var(--space-5);
+    border-top: 1px solid var(--color-border);
+    background-color: #fbfaf6;
+}
+
+.card-title {
+    font-size: var(--size-medium);
+    margin-bottom: var(--space-2);
+}
+
+.panel {
+    background-color: var(--color-green-soft);
+    border: 1px solid var(--color-green);
+    border-radius: var(--radius-medium);
+    padding: var(--space-4) var(--space-5);
+}
+
+/* ------------------------------------------------------------
+   8. Forms
+   ------------------------------------------------------------ */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+}
+
+.form-label {
+    font-size: var(--size-small);
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    color: var(--color-ink);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-small);
+    background-color: var(--color-card);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: var(--size-normal);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    outline: 2px solid var(--color-green);
+    outline-offset: 1px;
+    border-color: var(--color-green);
+}
+
+.form-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-help {
+    font-size: var(--size-small);
+    color: var(--color-ink-soft);
+}
+
+.form-check {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    font-size: var(--size-small);
+}
+
+.form-check input {
+    margin-top: 4px;
+    accent-color: var(--color-green);
+}
+
+.form-actions {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+}
+
+/* Password hint rules box */
+.hint-box {
+    background-color: var(--color-gold-soft);
+    border: 1px dashed var(--color-gold);
+    border-radius: var(--radius-small);
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--size-small);
+}
+
+.hint-box li {
+    margin-left: var(--space-4);
+    list-style: disc;
+    margin-bottom: var(--space-1);
+}
+
+/* ------------------------------------------------------------
+   9. Hero area on the home page
+   ------------------------------------------------------------ */
+.hero {
+    background-color: var(--color-green);
+    color: var(--color-card);
+    padding: var(--space-8) 0;
+    border-bottom: 4px solid var(--color-gold);
+}
+
+.hero .container {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--space-7);
+    align-items: center;
+}
+
+.hero-title {
+    font-size: 3rem;
+    line-height: 1.15;
+    color: var(--color-card);
+    margin-bottom: var(--space-4);
+}
+
+.hero-text {
+    font-size: var(--size-medium);
+    color: var(--color-green-soft);
+    margin-bottom: var(--space-6);
+    max-width: 520px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+}
+
+/* CSS-only ballot box illustration */
+.ballot-box {
+    background-color: var(--color-card);
+    border: 3px solid var(--color-gold);
+    border-radius: var(--radius-large);
+    padding: var(--space-6);
+    color: var(--color-ink);
+    text-align: center;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+}
+
+.ballot-box-slot {
+    width: 70%;
+    height: 14px;
+    margin: 0 auto var(--space-4);
+    background-color: var(--color-ink);
+    border-radius: 4px;
+}
+
+.ballot-box-paper {
+    width: 56%;
+    height: 64px;
+    margin: 0 auto var(--space-4);
+    background-color: var(--color-green-soft);
+    border: 2px solid var(--color-green);
+    border-radius: var(--radius-small);
+    position: relative;
+}
+
+.ballot-box-paper::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 28px;
+    height: 28px;
+    border: 3px solid var(--color-green);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ballot-box-label {
+    font-family: var(--font-display);
+    font-size: var(--size-medium);
+    margin-bottom: var(--space-2);
+}
+
+.ballot-box-note {
+    font-size: var(--size-small);
+    color: var(--color-ink-soft);
+}
+
+/* ------------------------------------------------------------
+   10. Home page content blocks
+   ------------------------------------------------------------ */
+.feature-card {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-top: 4px solid var(--color-green);
+    border-radius: var(--radius-medium);
+    padding: var(--space-5);
+}
+
+.feature-number {
+    display: inline-flex;
+    width: 36px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--color-green-soft);
+    color: var(--color-green);
+    font-family: var(--font-display);
+    font-weight: 700;
+    margin-bottom: var(--space-3);
+}
+
+.feature-title {
+    font-size: var(--size-medium);
+    margin-bottom: var(--space-2);
+}
+
+.feature-text {
+    font-size: var(--size-small);
+    color: var(--color-ink-soft);
+    margin-bottom: var(--space-4);
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+}
+
+.step {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: var(--space-5);
+    text-align: center;
+}
+
+.step-index {
+    font-family: var(--font-display);
+    font-size: var(--size-xlarge);
+    color: var(--color-gold);
+    margin-bottom: var(--space-2);
+}
+
+.step-title {
+    font-size: var(--size-normal);
+    margin-bottom: var(--space-2);
+}
+
+.step-text {
+    font-size: var(--size-small);
+    color: var(--color-ink-soft);
+}
+
+.info-strip {
+    background-color: var(--color-gold-soft);
+    border-top: 1px solid var(--color-gold);
+    border-bottom: 1px solid var(--color-gold);
+    padding: var(--space-5) 0;
+}
+
+.info-strip .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-5);
+    flex-wrap: wrap;
+}
+
+.info-strip h3 {
+    margin-bottom: var(--space-1);
+}
+
+.cta-band {
+    background-color: var(--color-green-dark);
+    color: var(--color-card);
+    text-align: center;
+    padding: var(--space-7) 0;
+}
+
+.cta-band h2 {
+    color: var(--color-card);
+    margin-bottom: var(--space-3);
+}
+
+.cta-band p {
+    color: var(--color-green-soft);
+    margin-bottom: var(--space-5);
+}
+
+/* ------------------------------------------------------------
+   11. Page heading band (inner pages)
+   ------------------------------------------------------------ */
+.page-band {
+    background-color: var(--color-green-soft);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-6) 0;
+}
+
+.page-band h1 {
+    font-size: var(--size-xlarge);
+    margin-bottom: var(--space-2);
+}
+
+.page-band p {
+    color: var(--color-ink-soft);
+    max-width: 680px;
+}
+
+/* ------------------------------------------------------------
+   12. Auth pages (login and register)
+   ------------------------------------------------------------ */
+.auth-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-7);
+    align-items: start;
+    padding-top: var(--space-7);
+    padding-bottom: var(--space-7);
+}
+
+.auth-intro {
+    background-color: var(--color-green);
+    color: var(--color-card);
+    border-radius: var(--radius-large);
+    padding: var(--space-7);
+}
+
+.auth-intro h2 {
+    color: var(--color-card);
+    margin-bottom: var(--space-4);
+}
+
+.auth-intro p {
+    color: var(--color-green-soft);
+}
+
+.auth-list li {
+    position: relative;
+    padding-left: var(--space-5);
+    margin-bottom: var(--space-3);
+    color: var(--color-green-soft);
+    font-size: var(--size-small);
+}
+
+.auth-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-gold);
+}
+
+.auth-card {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-large);
+    box-shadow: 0 8px 22px var(--color-shadow);
+    padding: var(--space-7);
+}
+
+.auth-card h2 {
+    margin-bottom: var(--space-2);
+}
+
+.auth-card .lead {
+    color: var(--color-ink-soft);
+    margin-bottom: var(--space-6);
+}
+
+.auth-switch {
+    margin-top: var(--space-5);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+    font-size: var(--size-small);
+    text-align: center;
+}
+
+/* ------------------------------------------------------------
+   13. Ballot and candidate cards
+   ------------------------------------------------------------ */
+.ballot-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-5);
+}
+
+.ballot-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5);
+    margin-bottom: var(--space-6);
+}
+
+.candidate-card {
+    display: block;
+    background-color: var(--color-card);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: var(--space-5);
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.candidate-card:hover {
+    border-color: var(--color-green);
+    box-shadow: 0 6px 16px var(--color-shadow);
+}
+
+/* The real radio button stays hidden; the card works as the label */
+.candidate-card input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.candidate-top {
+    display: flex;
+    gap: var(--space-4);
+    align-items: center;
+    margin-bottom: var(--space-3);
+}
+
+.candidate-avatar {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background-color: var(--color-green-soft);
+    border: 2px solid var(--color-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: var(--size-medium);
+    color: var(--color-green);
+    flex-shrink: 0;
+}
+
+.candidate-name {
+    font-size: var(--size-medium);
+    margin-bottom: 2px;
+}
+
+.candidate-role {
+    font-size: var(--size-small);
+    color: var(--color-ink-soft);
+}
+
+.candidate-text {
+    font-size: var(--size-small);
+    color: var(--color-ink-soft);
+    margin-bottom: var(--space-3);
+}
+
+.candidate-tags {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+}
+
+/* Highlight the whole card when its radio button is checked */
+.candidate-card:has(input:checked) {
+    border-color: var(--color-green);
+    background-color: var(--color-green-soft);
+    box-shadow: 0 8px 18px rgba(46, 94, 78, 0.22);
+}
+
+.stamp {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    border: 2px solid var(--color-green);
+    color: var(--color-green);
+    border-radius: var(--radius-small);
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: rotate(-8deg);
+}
+
+.candidate-card:has(input:checked) .stamp {
+    opacity: 1;
+}
+
+.candidate-card:focus-within {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+}
+
+.ballot-summary {
+    background-color: var(--color-card);
+    border: 2px dashed var(--color-green);
+    border-radius: var(--radius-medium);
+    padding: var(--space-5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+}
+
+/* ------------------------------------------------------------
+   14. Tags, badges and status
+   ------------------------------------------------------------ */
+.tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 999px;
+    background-color: var(--color-green-soft);
+    color: var(--color-green);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.tag-gold {
+    background-color: var(--color-gold-soft);
+    color: var(--color-gold);
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-open {
+    background-color: var(--color-green-soft);
+    color: var(--color-green);
+}
+
+.badge-soon {
+    background-color: var(--color-gold-soft);
+    color: var(--color-gold);
+}
+
+.badge-done {
+    background-color: var(--color-info-soft);
+    color: var(--color-info);
+}
+
+/* ------------------------------------------------------------
+   15. Tables and lists
+   ------------------------------------------------------------ */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    overflow: hidden;
+}
+
+.data-table th,
+.data-table td {
+    padding: var(--space-3) var(--space-4);
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+    font-size: var(--size-small);
+}
+
+.data-table th {
+    background-color: #fbfaf6;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-soft);
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+.data-table tr:hover td {
+    background-color: var(--color-green-soft);
+}
+
+/* ------------------------------------------------------------
+   16. Alert messages
+   ------------------------------------------------------------ */
+.alert {
+    padding: var(--space-4) var(--space-5);
+    border-radius: var(--radius-medium);
+    border: 1px solid transparent;
+    margin-bottom: var(--space-5);
+    font-size: var(--size-small);
+}
+
+.alert strong {
+    display: block;
+    margin-bottom: var(--space-1);
+    font-size: var(--size-normal);
+}
+
+.alert-info {
+    background-color: var(--color-info-soft);
+    border-color: var(--color-info);
+    color: var(--color-info);
+}
+
+.alert-success {
+    background-color: var(--color-green-soft);
+    border-color: var(--color-green);
+    color: var(--color-green-dark);
+}
+
+.alert-warning {
+    background-color: var(--color-gold-soft);
+    border-color: var(--color-gold);
+    color: #7a5a1c;
+}
+
+.alert-danger {
+    background-color: var(--color-danger-soft);
+    border-color: var(--color-danger);
+    color: var(--color-danger);
+}
+
+/* ------------------------------------------------------------
+   17. Footer
+   ------------------------------------------------------------ */
+.site-footer {
+    background-color: var(--color-ink);
+    color: var(--color-border);
+    margin-top: var(--space-8);
+    padding: var(--space-7) 0 var(--space-5);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--space-6);
+    margin-bottom: var(--space-6);
+}
+
+.footer-title {
+    font-family: var(--font-display);
+    color: var(--color-card);
+    font-size: var(--size-normal);
+    margin-bottom: var(--space-3);
+}
+
+.footer-text {
+    font-size: var(--size-small);
+    line-height: 1.8;
+}
+
+.footer-links li {
+    margin-bottom: var(--space-2);
+}
+
+.footer-links a {
+    color: var(--color-border);
+    font-size: var(--size-small);
+}
+
+.footer-links a:hover {
+    color: var(--color-gold);
+}
+
+.footer-bottom {
+    border-top: 1px solid #3a4148;
+    padding-top: var(--space-4);
+    font-size: var(--size-small);
+    color: var(--color-ink-soft);
+    text-align: center;
+}
+
+/* ------------------------------------------------------------
+   18. Responsive rules (small screens)
+   ------------------------------------------------------------ */
+@media (max-width: 900px) {
+    .hero .container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-title {
+        font-size: 2.25rem;
+    }
+
+    .grid-3,
+    .steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .auth-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ------------------------------------------------------------
+   19. Small components used on several pages
+   ------------------------------------------------------------ */
+
+/* Stat box shows one big number with a label */
+.stat-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+}
+
+.stat-box {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: var(--space-5);
+    text-align: center;
+}
+
+.stat-number {
+    font-family: var(--font-display);
+    font-size: var(--size-xlarge);
+    color: var(--color-green);
+    line-height: 1.1;
+    margin-bottom: var(--space-2);
+}
+
+.stat-label {
+    font-size: var(--size-small);
+    color: var(--color-ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Divider line with a small centered label */
+.divider {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    color: var(--color-ink-soft);
+    font-size: var(--size-small);
+    margin: var(--space-5) 0;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: var(--color-border);
+}
+
+/* Quote block for candidate words */
+.quote {
+    background-color: var(--color-card);
+    border-left: 4px solid var(--color-gold);
+    border-radius: 0 var(--radius-medium) var(--radius-medium) 0;
+    padding: var(--space-4) var(--space-5);
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-ink-soft);
+}
+
+.quote-author {
+    display: block;
+    margin-top: var(--space-3);
+    font-family: var(--font-body);
+    font-style: normal;
+    font-size: var(--size-small);
+    font-weight: 700;
+    color: var(--color-ink);
+}
+
+/* Progress steps: a horizontal bar with numbered dots */
+.progress {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+}
+
+.progress-item {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    padding-top: var(--space-5);
+    font-size: var(--size-small);
+    color: var(--color-ink-soft);
+}
+
+.progress-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--color-border);
+    border-radius: 50%;
+    background-color: var(--color-card);
+    transform: translateX(-50%);
+}
+
+.progress-item.done::before {
+    border-color: var(--color-green);
+    background-color: var(--color-green);
+}
+
+.progress-item.current {
+    color: var(--color-green);
+    font-weight: 700;
+}
+
+.progress-item.current::before {
+    border-color: var(--color-green);
+    background-color: var(--color-gold);
+}
+
+/* Breadcrumb trail under the header */
+.breadcrumb {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+    font-size: var(--size-small);
+    color: var(--color-ink-soft);
+    margin-bottom: var(--space-4);
+}
+
+.breadcrumb a {
+    color: var(--color-green);
+}
+
+.breadcrumb li::after {
+    content: "/";
+    margin-left: var(--space-2);
+    color: var(--color-border);
+}
+
+.breadcrumb li:last-child::after {
+    content: "";
+}
+
+/* Pagination row */
+.pagination {
+    display: flex;
+    gap: var(--space-2);
+    justify-content: center;
+    margin-top: var(--space-6);
+}
+
+.page-link {
+    display: inline-block;
+    min-width: 38px;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-small);
+    background-color: var(--color-card);
+    color: var(--color-ink);
+    font-size: var(--size-small);
+    text-align: center;
+    text-decoration: none;
+}
+
+.page-link:hover {
+    border-color: var(--color-green);
+    color: var(--color-green);
+    text-decoration: none;
+}
+
+.page-link.active {
+    background-color: var(--color-green);
+    border-color: var(--color-green);
+    color: var(--color-card);
+}
+
+/* Definition list for fact boxes */
+.fact-list dt {
+    font-size: var(--size-small);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-soft);
+    margin-top: var(--space-3);
+}
+
+.fact-list dd {
+    margin-bottom: var(--space-2);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px dashed var(--color-border);
+}
+
+/* ------------------------------------------------------------
+   20. Responsive rules (small screens)
+   ------------------------------------------------------------ */
+@media (max-width: 900px) {
+    .hero .container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-title {
+        font-size: 2.25rem;
+    }
+
+    .grid-3,
+    .steps,
+    .stat-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .auth-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .site-header .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .grid-2,
+    .grid-3,
+    .ballot-grid,
+    .steps,
+    .stat-row,
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-actions .btn,
+    .form-actions .btn {
+        width: 100%;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ballot-summary {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .progress {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .progress-item {
+        padding-top: 0;
+        padding-left: var(--space-6);
+        text-align: left;
+    }
+
+    .progress-item::before {
+        left: 0;
+        transform: none;
+    }
+}
+

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!-- Vote page: the ballot where a voter picks one candidate -->
+<html lang="en">
+<head>
+    <!-- Page settings and shared stylesheet -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMVS | Vote</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- ==================== Site header ==================== -->
+    <header class="site-header">
+        <div class="container">
+            <!-- Brand block with a CSS seal mark -->
+            <a class="brand" href="index.html">
+                <div class="seal">EMVS</div>
+                <div>
+                    <div class="brand-title">EMVS</div>
+                    <div class="brand-sub">Campus Voting System</div>
+                </div>
+            </a>
+            <!-- Main navigation links -->
+            <nav class="site-nav">
+                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link active" href="vote.html">Vote</a>
+                <a class="nav-link" href="add-candidate.html">Add Candidate</a>
+                <a class="nav-link" href="register.html">Register</a>
+                <a class="nav-link" href="login.html">Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==================== Page heading band ==================== -->
+    <section class="page-band">
+        <div class="container">
+            <h1>Student Council Ballot</h1>
+            <p>
+                Read the candidate profiles carefully, then click the card of
+                the person you want to support. You can change your choice
+                before you press the final submit button.
+            </p>
+        </div>
+    </section>
+
+    <!-- ==================== Voting content ==================== -->
+    <main class="section">
+        <div class="container">
+
+            <!-- Election information card -->
+            <div class="card" style="margin-bottom: 24px;">
+                <div class="card-body">
+                    <div class="flex-between">
+                        <div>
+                            <h2 class="card-title">2026 Student Council Election</h2>
+                            <p class="text-muted">
+                                Position: Council President |
+                                Candidates: 6 |
+                                Deadline: December 15, 2026 |
+                                Your status: ready to vote
+                            </p>
+                        </div>
+                        <span class="badge badge-open">Voting Open</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Warning message before the ballot -->
+            <div class="alert alert-info">
+                <strong>Before You Vote</strong>
+                Select exactly one candidate. After you submit, your ballot
+                cannot be changed. Keep the receipt code in a safe place.
+            </div>
+
+            <!-- Quote from the election officer -->
+            <div class="quote">
+                "A fair election starts with an informed voter. Please read
+                every profile with care, and vote for the ideas that matter
+                to you."
+                <span class="quote-author">- Maria Chen, Chief Election Officer</span>
+            </div>
+
+            <!-- Ballot toolbar -->
+            <div class="ballot-toolbar">
+                <h2>Choose One Candidate</h2>
+                <span class="tag tag-gold">One choice only</span>
+            </div>
+
+            <!-- The ballot form holds all candidate cards -->
+            <form class="form" action="#" method="post">
+
+                <div class="ballot-grid">
+
+                    <!-- Candidate 1 -->
+                    <label class="candidate-card">
+                        <input type="radio" name="candidate" value="alice" required>
+                        <span class="stamp">Selected</span>
+                        <div class="candidate-top">
+                            <div class="candidate-avatar">AJ</div>
+                            <div>
+                                <div class="candidate-name">Alice Johnson</div>
+                                <div class="candidate-role">Year 3 - Computer Science</div>
+                            </div>
+                        </div>
+                        <p class="candidate-text">
+                            Alice wants longer library hours and more power
+                            sockets in the study rooms. She has led the coding
+                            club for two years.
+                        </p>
+                        <div class="candidate-tags">
+                            <span class="tag">Library</span>
+                            <span class="tag">Study Space</span>
+                        </div>
+                    </label>
+
+                    <!-- Candidate 2 -->
+                    <label class="candidate-card">
+                        <input type="radio" name="candidate" value="bob">
+                        <span class="stamp">Selected</span>
+                        <div class="candidate-top">
+                            <div class="candidate-avatar">BW</div>
+                            <div>
+                                <div class="candidate-name">Brian Wong</div>
+                                <div class="candidate-role">Year 4 - Business</div>
+                            </div>
+                        </div>
+                        <p class="candidate-text">
+                            Brian plans to cut food prices at the canteen and
+                            create a student discount card for local shops
+                            near the campus.
+                        </p>
+                        <div class="candidate-tags">
+                            <span class="tag">Food</span>
+                            <span class="tag">Discounts</span>
+                        </div>
+                    </label>
+
+                    <!-- Candidate 3 -->
+                    <label class="candidate-card">
+                        <input type="radio" name="candidate" value="carol">
+                        <span class="stamp">Selected</span>
+                        <div class="candidate-top">
+                            <div class="candidate-avatar">CL</div>
+                            <div>
+                                <div class="candidate-name">Carol Lopez</div>
+                                <div class="candidate-role">Year 2 - Art and Design</div>
+                            </div>
+                        </div>
+                        <p class="candidate-text">
+                            Carol wants a bigger student art show every term
+                            and free printing for student club posters in
+                            the media room.
+                        </p>
+                        <div class="candidate-tags">
+                            <span class="tag">Art</span>
+                            <span class="tag">Clubs</span>
+                        </div>
+                    </label>
+
+                    <!-- Candidate 4 -->
+                    <label class="candidate-card">
+                        <input type="radio" name="candidate" value="david">
+                        <span class="stamp">Selected</span>
+                        <div class="candidate-top">
+                            <div class="candidate-avatar">DK</div>
+                            <div>
+                                <div class="candidate-name">David Kim</div>
+                                <div class="candidate-role">Year 3 - Engineering</div>
+                            </div>
+                        </div>
+                        <p class="candidate-text">
+                            David focuses on lab safety and wants a free bike
+                            repair station at the east gate for students who
+                            cycle to class.
+                        </p>
+                        <div class="candidate-tags">
+                            <span class="tag">Lab</span>
+                            <span class="tag">Bikes</span>
+                        </div>
+                    </label>
+
+                    <!-- Candidate 5 -->
+                    <label class="candidate-card">
+                        <input type="radio" name="candidate" value="emma">
+                        <span class="stamp">Selected</span>
+                        <div class="candidate-top">
+                            <div class="candidate-avatar">EN</div>
+                            <div>
+                                <div class="candidate-name">Emma Novak</div>
+                                <div class="candidate-role">Year 1 - Languages</div>
+                            </div>
+                        </div>
+                        <p class="candidate-text">
+                            Emma wants more language exchange evenings and a
+                            quiet room for students who need a calm place
+                            to study.
+                        </p>
+                        <div class="candidate-tags">
+                            <span class="tag">Languages</span>
+                            <span class="tag">Wellbeing</span>
+                        </div>
+                    </label>
+
+                    <!-- Candidate 6 -->
+                    <label class="candidate-card">
+                        <input type="radio" name="candidate" value="frank">
+                        <span class="stamp">Selected</span>
+                        <div class="candidate-top">
+                            <div class="candidate-avatar">FM</div>
+                            <div>
+                                <div class="candidate-name">Frank Moore</div>
+                                <div class="candidate-role">Year 4 - Sports Science</div>
+                            </div>
+                        </div>
+                        <p class="candidate-text">
+                            Frank plans to keep the gym open later at night
+                            and to add more team sports for first-year
+                            students.
+                        </p>
+                        <div class="candidate-tags">
+                            <span class="tag">Sports</span>
+                            <span class="tag">Gym</span>
+                        </div>
+                    </label>
+
+                </div>
+
+                <!-- Ballot summary and final submit -->
+                <div class="ballot-summary">
+                    <div>
+                        <h3>Final Step</h3>
+                        <p class="text-muted">
+                            Please check your choice once more before you submit.
+                        </p>
+                    </div>
+                    <div class="btn-row">
+                        <button class="btn btn-primary" type="submit">Submit My Ballot</button>
+                        <a class="btn btn-outline" href="index.html">Leave Without Voting</a>
+                    </div>
+                </div>
+
+            </form>
+
+            <!-- Extra note under the ballot -->
+            <div class="panel" style="margin-top: 24px;">
+                <h3>After You Submit</h3>
+                <p>
+                    The system will show a receipt code on the next screen.
+                    That code proves that your ballot entered the box, but it
+                    does not show your choice, so your vote stays secret.
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ==================== Site footer ==================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- About block -->
+                <div>
+                    <div class="footer-title">About EMVS</div>
+                    <p class="footer-text">
+                        EMVS is the campus election website.
+                        It covers account registration, secure voting, and
+                        candidate management for student council elections.
+                    </p>
+                </div>
+                <!-- Quick links block -->
+                <div>
+                    <div class="footer-title">Quick Links</div>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="vote.html">Vote</a></li>
+                        <li><a href="register.html">Register</a></li>
+                    </ul>
+                </div>
+                <!-- Contact block -->
+                <div>
+                    <div class="footer-title">Contact</div>
+                    <p class="footer-text">
+                        Email: office@emvs.example<br>
+                        Office: Student Center, Room 101<br>
+                        Hours: Mon - Fri, 9:00 - 17:00
+                    </p>
+                </div>
+            </div>
+            <!-- Copyright line -->
+            <div class="footer-bottom">
+                <p>© 2026 EMVS Campus Election Office. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

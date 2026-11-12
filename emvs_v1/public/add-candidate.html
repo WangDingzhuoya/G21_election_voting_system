@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<!-- Add Candidate page: the election officer adds a new candidate -->
+<html lang="en">
+<head>
+    <!-- Page settings and shared stylesheet -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMVS | Add Candidate</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- ==================== Site header ==================== -->
+    <header class="site-header">
+        <div class="container">
+            <!-- Brand block with a CSS seal mark -->
+            <a class="brand" href="index.html">
+                <div class="seal">EMVS</div>
+                <div>
+                    <div class="brand-title">EMVS</div>
+                    <div class="brand-sub">Campus Voting System</div>
+                </div>
+            </a>
+            <!-- Main navigation links -->
+            <nav class="site-nav">
+                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="vote.html">Vote</a>
+                <a class="nav-link active" href="add-candidate.html">Add Candidate</a>
+                <a class="nav-link" href="register.html">Register</a>
+                <a class="nav-link" href="login.html">Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==================== Page heading band ==================== -->
+    <section class="page-band">
+        <div class="container">
+            <h1>Add a New Candidate</h1>
+            <p>
+                This page is for the election officer. Fill in the candidate
+                profile below, and the new card will appear on the ballot.
+            </p>
+        </div>
+    </section>
+
+    <!-- ==================== Add candidate content ==================== -->
+    <main class="section">
+        <div class="container">
+
+            <!-- Notice for the officer -->
+            <div class="alert alert-warning">
+                <strong>Officer Access Only</strong>
+                This page is for election officers.
+                Please sign in with an officer account to manage candidates.
+            </div>
+
+            <!-- Two columns: form on the left, tips on the right -->
+            <div class="grid grid-2" style="align-items: start;">
+
+                <!-- Left column: the add-candidate form -->
+                <section class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Candidate Profile Form</h2>
+                        <small>All fields marked with * are required.</small>
+                    </div>
+                    <div class="card-body">
+                        <!-- Add candidate form -->
+                        <form class="form" action="#" method="post">
+
+                            <!-- Candidate name and student ID -->
+                            <div class="form-row">
+                                <!-- Full name -->
+                                <div class="form-group">
+                                    <label class="form-label" for="cand-name">Full Name *</label>
+                                    <input class="form-input"
+                                           type="text"
+                                           id="cand-name"
+                                           name="candidateName"
+                                           placeholder="Grace Hall"
+                                           required>
+                                </div>
+                                <!-- Student ID -->
+                                <div class="form-group">
+                                    <label class="form-label" for="cand-sid">Student ID *</label>
+                                    <input class="form-input"
+                                           type="text"
+                                           id="cand-sid"
+                                           name="studentId"
+                                           placeholder="S20260088"
+                                           required>
+                                </div>
+                            </div>
+
+                            <!-- Position and department -->
+                            <div class="form-row">
+                                <!-- Position dropdown -->
+                                <div class="form-group">
+                                    <label class="form-label" for="cand-position">Position *</label>
+                                    <select class="form-select" id="cand-position" name="position" required>
+                                        <option value="">Select a position</option>
+                                        <option value="president">Council President</option>
+                                        <option value="vice">Vice President</option>
+                                        <option value="treasurer">Treasurer</option>
+                                        <option value="secretary">Secretary</option>
+                                    </select>
+                                </div>
+                                <!-- Department dropdown -->
+                                <div class="form-group">
+                                    <label class="form-label" for="cand-dept">Department *</label>
+                                    <select class="form-select" id="cand-dept" name="department" required>
+                                        <option value="">Select a department</option>
+                                        <option value="cs">Computer Science</option>
+                                        <option value="ee">Electrical Engineering</option>
+                                        <option value="ba">Business Administration</option>
+                                        <option value="fl">Foreign Languages</option>
+                                        <option value="art">Art and Design</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Slogan input -->
+                            <div class="form-group">
+                                <label class="form-label" for="cand-slogan">Campaign Slogan *</label>
+                                <input class="form-input"
+                                       type="text"
+                                       id="cand-slogan"
+                                       name="slogan"
+                                       placeholder="Better food, happier students"
+                                       required>
+                                <p class="form-help">Keep it short, about five to ten words.</p>
+                            </div>
+
+                            <!-- Year of study and group name -->
+                            <div class="form-row">
+                                <!-- Year dropdown -->
+                                <div class="form-group">
+                                    <label class="form-label" for="cand-year">Year of Study *</label>
+                                    <select class="form-select" id="cand-year" name="year" required>
+                                        <option value="">Select a year</option>
+                                        <option value="1">Year 1</option>
+                                        <option value="2">Year 2</option>
+                                        <option value="3">Year 3</option>
+                                        <option value="4">Year 4</option>
+                                    </select>
+                                </div>
+                                <!-- Group input -->
+                                <div class="form-group">
+                                    <label class="form-label" for="cand-group">Group Name</label>
+                                    <input class="form-input"
+                                           type="text"
+                                           id="cand-group"
+                                           name="groupName"
+                                           placeholder="Green Campus Team">
+                                </div>
+                            </div>
+
+                            <!-- Biography textarea -->
+                            <div class="form-group">
+                                <label class="form-label" for="cand-bio">Short Biography *</label>
+                                <textarea class="form-textarea"
+                                          id="cand-bio"
+                                          name="biography"
+                                          placeholder="Write a short text about the candidate..."
+                                          required></textarea>
+                                <p class="form-help">
+                                    Write about 50 to 120 words. Introduce the person
+                                    and explain the main campaign ideas.
+                                </p>
+                            </div>
+
+                            <!-- Photo file input -->
+                            <div class="form-group">
+                                <label class="form-label" for="cand-photo">Profile Photo</label>
+                                <input class="form-input"
+                                       type="file"
+                                       id="cand-photo"
+                                       name="photo"
+                                       accept="image/png, image/jpeg">
+                                <p class="form-help">PNG or JPG, maximum size 2 MB.</p>
+                            </div>
+
+                            <!-- Publish checkbox -->
+                            <label class="form-check">
+                                <input type="checkbox" name="publish" value="yes">
+                                <span>
+                                    Publish this candidate to the ballot right away.
+                                    If you leave this box empty, the profile stays as a draft.
+                                </span>
+                            </label>
+
+                            <!-- Submit and clear buttons -->
+                            <div class="form-actions">
+                                <button class="btn btn-primary" type="submit">Add Candidate</button>
+                                <button class="btn btn-outline" type="reset">Clear Form</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Right column: tips and preview box -->
+                <div>
+                    <!-- Tips panel -->
+                    <div class="panel" style="margin-bottom: 24px;">
+                        <h3>Writing Tips</h3>
+                        <p>
+                            A good profile is short and clear. Students often
+                            read only the first two lines, so put the main idea
+                            at the start of the biography.
+                        </p>
+                    </div>
+
+                    <!-- Checklist card -->
+                    <div class="card" style="margin-bottom: 24px;">
+                        <div class="card-header">
+                            <h3 class="card-title">Before You Add</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="auth-list" style="color: var(--color-ink-soft);">
+                                <li style="color: var(--color-ink-soft);">
+                                    Check the spelling of the student name.
+                                </li>
+                                <li style="color: var(--color-ink-soft);">
+                                    Make sure the student ID is real.
+                                </li>
+                                <li style="color: var(--color-ink-soft);">
+                                    Ask the person for a photo before publishing.
+                                </li>
+                                <li style="color: var(--color-ink-soft);">
+                                    Read the biography out loud one time.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Photo preview placeholder -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Photo Preview</h3>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="candidate-avatar"
+                                 style="width: 96px; height: 96px; margin: 0 auto 16px; font-size: 1.5rem;">
+                                ?
+                            </div>
+                            <p class="text-muted">
+                                The preview appears here after you choose a file.
+                                The picture is saved together with the candidate profile.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Current candidates table -->
+            <div style="margin-top: 48px;">
+                <h2 class="section-title">Current Candidates</h2>
+                <p class="section-subtitle">
+                    The table below shows the people who are already on the ballot.
+                </p>
+                <!-- Candidate data table -->
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Year</th>
+                            <th>Department</th>
+                            <th>Slogan</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Alice Johnson</td>
+                            <td>Year 3</td>
+                            <td>Computer Science</td>
+                            <td>More power for study time</td>
+                            <td><span class="badge badge-open">Published</span></td>
+                        </tr>
+                        <tr>
+                            <td>Brian Wong</td>
+                            <td>Year 4</td>
+                            <td>Business</td>
+                            <td>Good food at low prices</td>
+                            <td><span class="badge badge-open">Published</span></td>
+                        </tr>
+                        <tr>
+                            <td>Carol Lopez</td>
+                            <td>Year 2</td>
+                            <td>Art and Design</td>
+                            <td>A campus full of color</td>
+                            <td><span class="badge badge-open">Published</span></td>
+                        </tr>
+                        <tr>
+                            <td>David Kim</td>
+                            <td>Year 3</td>
+                            <td>Engineering</td>
+                            <td>Safe labs, easy bikes</td>
+                            <td><span class="badge badge-open">Published</span></td>
+                        </tr>
+                        <tr>
+                            <td>Emma Novak</td>
+                            <td>Year 1</td>
+                            <td>Languages</td>
+                            <td>Speak more, stress less</td>
+                            <td><span class="badge badge-soon">Draft</span></td>
+                        </tr>
+                        <tr>
+                            <td>Frank Moore</td>
+                            <td>Year 4</td>
+                            <td>Sports Science</td>
+                            <td>Play more, live better</td>
+                            <td><span class="badge badge-open">Published</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- Pagination under the table -->
+                <nav class="pagination">
+                    <a class="page-link" href="#">Prev</a>
+                    <a class="page-link active" href="#">1</a>
+                    <a class="page-link" href="#">2</a>
+                    <a class="page-link" href="#">3</a>
+                    <a class="page-link" href="#">Next</a>
+                </nav>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ==================== Site footer ==================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- About block -->
+                <div>
+                    <div class="footer-title">About EMVS</div>
+                    <p class="footer-text">
+                        EMVS is the campus election website.
+                        It covers account registration, secure voting, and
+                        candidate management for student council elections.
+                    </p>
+                </div>
+                <!-- Quick links block -->
+                <div>
+                    <div class="footer-title">Quick Links</div>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="vote.html">Vote</a></li>
+                        <li><a href="register.html">Register</a></li>
+                    </ul>
+                </div>
+                <!-- Contact block -->
+                <div>
+                    <div class="footer-title">Contact</div>
+                    <p class="footer-text">
+                        Email: office@emvs.example<br>
+                        Office: Student Center, Room 101<br>
+                        Hours: Mon - Fri, 9:00 - 17:00
+                    </p>
+                </div>
+            </div>
+            <!-- Copyright line -->
+            <div class="footer-bottom">
+                <p>© 2026 EMVS Campus Election Office. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

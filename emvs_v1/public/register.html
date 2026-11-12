@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<!-- Register page: new voters create their account here -->
+<html lang="en">
+<head>
+    <!-- Page settings and shared stylesheet -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMVS | Register</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- ==================== Site header ==================== -->
+    <header class="site-header">
+        <div class="container">
+            <!-- Brand block with a CSS seal mark -->
+            <a class="brand" href="index.html">
+                <div class="seal">EMVS</div>
+                <div>
+                    <div class="brand-title">EMVS</div>
+                    <div class="brand-sub">Campus Voting System</div>
+                </div>
+            </a>
+            <!-- Main navigation links -->
+            <nav class="site-nav">
+                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="vote.html">Vote</a>
+                <a class="nav-link" href="add-candidate.html">Add Candidate</a>
+                <a class="nav-link active" href="register.html">Register</a>
+                <a class="nav-link" href="login.html">Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==================== Page heading band ==================== -->
+    <section class="page-band">
+        <div class="container">
+            <h1>Create Your Voter Account</h1>
+            <p>
+                Fill in this form one time to join the election.
+                The office will check your student ID before voting day.
+            </p>
+        </div>
+    </section>
+
+    <!-- ==================== Register content ==================== -->
+    <main>
+        <div class="container">
+
+            <!-- Progress bar shows the three registration steps -->
+            <div class="progress" style="margin-top: 32px;">
+                <div class="progress-item done">1. Fill the form</div>
+                <div class="progress-item current">2. Office check</div>
+                <div class="progress-item">3. Start voting</div>
+            </div>
+
+            <div class="auth-layout">
+
+                <!-- Left side: why register -->
+                <aside class="auth-intro">
+                    <h2>Why Register?</h2>
+                    <p>
+                        Registration connects your real student identity with
+                        your online voting account. This step keeps the election
+                        fair, because every student gets exactly one vote.
+                    </p>
+                    <ul class="auth-list">
+                        <li>Registration is free for all active students.</li>
+                        <li>You only need to fill this form once.</li>
+                        <li>Your password is never shown to other people.</li>
+                        <li>After registration you can log in and vote.</li>
+                    </ul>
+                </aside>
+
+                <!-- Right side: the register form card -->
+                <section class="auth-card">
+                    <h2>Register Form</h2>
+                    <p class="lead">Fields marked with * are required.</p>
+
+                    <!-- Success message example -->
+                    <div class="alert alert-success">
+                        <strong>Step 1 of 1</strong>
+                        Complete all fields, then press the Register button.
+                    </div>
+
+                    <!-- Register form -->
+                    <form class="form" action="#" method="post">
+
+                        <!-- Two short fields on one row -->
+                        <div class="form-row">
+                            <!-- Full name -->
+                            <div class="form-group">
+                                <label class="form-label" for="reg-name">Full Name *</label>
+                                <input class="form-input"
+                                       type="text"
+                                       id="reg-name"
+                                       name="fullName"
+                                       placeholder="Alice Johnson"
+                                       required>
+                            </div>
+                            <!-- Student ID -->
+                            <div class="form-group">
+                                <label class="form-label" for="reg-sid">Student ID *</label>
+                                <input class="form-input"
+                                       type="text"
+                                       id="reg-sid"
+                                       name="studentId"
+                                       placeholder="S20260001"
+                                       required>
+                            </div>
+                        </div>
+
+                        <!-- Email input -->
+                        <div class="form-group">
+                            <label class="form-label" for="reg-email">Email Address *</label>
+                            <input class="form-input"
+                                   type="email"
+                                   id="reg-email"
+                                   name="email"
+                                   placeholder="alice@campus.edu"
+                                   required>
+                            <p class="form-help">Use your school email so the office can contact you.</p>
+                        </div>
+
+                        <!-- Department and year on one row -->
+                        <div class="form-row">
+                            <!-- Department dropdown -->
+                            <div class="form-group">
+                                <label class="form-label" for="reg-dept">Department *</label>
+                                <select class="form-select" id="reg-dept" name="department" required>
+                                    <option value="">Select a department</option>
+                                    <option value="cs">Computer Science</option>
+                                    <option value="ee">Electrical Engineering</option>
+                                    <option value="ba">Business Administration</option>
+                                    <option value="fl">Foreign Languages</option>
+                                    <option value="art">Art and Design</option>
+                                </select>
+                            </div>
+                            <!-- Year dropdown -->
+                            <div class="form-group">
+                                <label class="form-label" for="reg-year">Year of Study *</label>
+                                <select class="form-select" id="reg-year" name="year" required>
+                                    <option value="">Select your year</option>
+                                    <option value="1">Year 1</option>
+                                    <option value="2">Year 2</option>
+                                    <option value="3">Year 3</option>
+                                    <option value="4">Year 4</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-group">
+                            <label class="form-label" for="reg-password">Password *</label>
+                            <input class="form-input"
+                                   type="password"
+                                   id="reg-password"
+                                   name="password"
+                                   placeholder="Create a password"
+                                   required>
+                            <!-- Password rules box -->
+                            <div class="hint-box">
+                                <strong>Password Rules</strong>
+                                <ul>
+                                    <li>Use at least 8 characters.</li>
+                                    <li>Include at least one number.</li>
+                                    <li>Include at least one big letter.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Confirm password input -->
+                        <div class="form-group">
+                            <label class="form-label" for="reg-confirm">Confirm Password *</label>
+                            <input class="form-input"
+                                   type="password"
+                                   id="reg-confirm"
+                                   name="confirmPassword"
+                                   placeholder="Type your password again"
+                                   required>
+                            <p class="form-help">Both password fields must be the same.</p>
+                        </div>
+
+                        <!-- Agreement checkbox -->
+                        <label class="form-check">
+                            <input type="checkbox" name="agree" value="yes" required>
+                            <span>
+                                I agree with the election rules, and I confirm that
+                                the information above is true.
+                            </span>
+                        </label>
+
+                        <!-- Submit and reset buttons -->
+                        <div class="form-actions">
+                            <button class="btn btn-primary" type="submit">Register</button>
+                            <button class="btn btn-outline" type="reset">Clear Form</button>
+                        </div>
+                    </form>
+
+                    <!-- Link to the login page -->
+                    <div class="auth-switch">
+                        <p>
+                            Already have an account? <a href="login.html">Go to login</a>
+                        </p>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- ==================== What happens next ==================== -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <h2 class="section-title">What Happens Next?</h2>
+            <p class="section-subtitle">
+                After you press the Register button, the system works in three steps.
+            </p>
+            <div class="steps" style="grid-template-columns: repeat(3, 1fr);">
+                <!-- Step A -->
+                <div class="step">
+                    <div class="step-index">A</div>
+                    <div class="step-title">Check Data</div>
+                    <p class="step-text">The office checks that your student ID is real.</p>
+                </div>
+                <!-- Step B -->
+                <div class="step">
+                    <div class="step-index">B</div>
+                    <div class="step-title">Get Email</div>
+                    <p class="step-text">You receive a short welcome email with a link.</p>
+                </div>
+                <!-- Step C -->
+                <div class="step">
+                    <div class="step-index">C</div>
+                    <div class="step-title">Start Voting</div>
+                    <p class="step-text">Log in any time before December 15, 2026.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Site footer ==================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- About block -->
+                <div>
+                    <div class="footer-title">About EMVS</div>
+                    <p class="footer-text">
+                        EMVS is the campus election website.
+                        It covers account registration, secure voting, and
+                        candidate management for student council elections.
+                    </p>
+                </div>
+                <!-- Quick links block -->
+                <div>
+                    <div class="footer-title">Quick Links</div>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="vote.html">Vote</a></li>
+                        <li><a href="register.html">Register</a></li>
+                    </ul>
+                </div>
+                <!-- Contact block -->
+                <div>
+                    <div class="footer-title">Contact</div>
+                    <p class="footer-text">
+                        Email: office@emvs.example<br>
+                        Office: Student Center, Room 101<br>
+                        Hours: Mon - Fri, 9:00 - 17:00
+                    </p>
+                </div>
+            </div>
+            <!-- Copyright line -->
+            <div class="footer-bottom">
+                <p>© 2026 EMVS Campus Election Office. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

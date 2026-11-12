@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!-- Home page of the EMVS website -->
+<html lang="en">
+<head>
+    <!-- Page settings and shared stylesheet -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMVS | Home</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- ==================== Site header ==================== -->
+    <header class="site-header">
+        <div class="container">
+            <!-- Brand block with a CSS seal mark -->
+            <a class="brand" href="index.html">
+                <div class="seal">EMVS</div>
+                <div>
+                    <div class="brand-title">EMVS</div>
+                    <div class="brand-sub">Campus Voting System</div>
+                </div>
+            </a>
+            <!-- Main navigation links -->
+            <nav class="site-nav">
+                <a class="nav-link active" href="index.html">Home</a>
+                <a class="nav-link" href="vote.html">Vote</a>
+                <a class="nav-link" href="add-candidate.html">Add Candidate</a>
+                <a class="nav-link" href="register.html">Register</a>
+                <a class="nav-link" href="login.html">Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==================== Hero area ==================== -->
+    <section class="hero">
+        <div class="container">
+            <div>
+                <!-- Main title and short description -->
+                <h1 class="hero-title">Every Voice Counts on Campus</h1>
+                <p class="hero-text">
+                    EMVS is the election website for students.
+                    Register your account, meet the candidates, and cast one
+                    clear vote. The whole process is easy to follow.
+                </p>
+                <!-- Two call-to-action buttons -->
+                <div class="hero-actions">
+                    <a class="btn btn-secondary" href="vote.html">Start Voting</a>
+                    <a class="btn btn-light" href="register.html">Create Account</a>
+                </div>
+            </div>
+            <!-- A ballot box drawn only with CSS shapes -->
+            <div class="ballot-box">
+                <div class="ballot-box-slot"></div>
+                <div class="ballot-box-paper"></div>
+                <div class="ballot-box-label">Official Ballot Box</div>
+                <div class="ballot-box-note">Secure and fair for everyone</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Election news strip ==================== -->
+    <section class="info-strip">
+        <div class="container">
+            <div>
+                <h3>2026 Student Council Election</h3>
+                <p class="text-muted">Voting is open now. The voting period runs from November 1 to December 15, 2026.</p>
+            </div>
+            <span class="badge badge-open">Status: Open</span>
+        </div>
+    </section>
+
+    <!-- ==================== Election numbers ==================== -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Election in Numbers</h2>
+            <p class="section-subtitle">
+                These numbers update every day during the election period.
+            </p>
+            <div class="stat-row">
+                <!-- Stat 1: registered voters -->
+                <div class="stat-box">
+                    <div class="stat-number">1,284</div>
+                    <div class="stat-label">Registered Voters</div>
+                </div>
+                <!-- Stat 2: candidates -->
+                <div class="stat-box">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Candidates</div>
+                </div>
+                <!-- Stat 3: days left -->
+                <div class="stat-box">
+                    <div class="stat-number">33</div>
+                    <div class="stat-label">Days Left</div>
+                </div>
+                <!-- Stat 4: votes already cast -->
+                <div class="stat-box">
+                    <div class="stat-number">738</div>
+                    <div class="stat-label">Votes Cast</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== How it works ==================== -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">
+                Four steps take you from a new account to a counted vote.
+            </p>
+            <div class="steps">
+                <!-- Step 1: register -->
+                <div class="step">
+                    <div class="step-index">1</div>
+                    <div class="step-title">Register</div>
+                    <p class="step-text">Fill in your student details and create a free account.</p>
+                </div>
+                <!-- Step 2: log in -->
+                <div class="step">
+                    <div class="step-index">2</div>
+                    <div class="step-title">Log In</div>
+                    <p class="step-text">Use your email and password to enter the voting area.</p>
+                </div>
+                <!-- Step 3: choose -->
+                <div class="step">
+                    <div class="step-index">3</div>
+                    <div class="step-title">Choose</div>
+                    <p class="step-text">Read each candidate profile and pick the one you support.</p>
+                </div>
+                <!-- Step 4: submit -->
+                <div class="step">
+                    <div class="step-index">4</div>
+                    <div class="step-title">Submit</div>
+                    <p class="step-text">Send your ballot once, and keep the receipt code safe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Feature cards ==================== -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <h2 class="section-title">Main Pages</h2>
+            <p class="section-subtitle">
+                Explore the main functions of EMVS.
+                Click any card below to open that page.
+            </p>
+            <div class="grid grid-2">
+                <!-- Feature: login -->
+                <div class="feature-card">
+                    <div class="feature-number">A</div>
+                    <h3 class="feature-title">Login Page</h3>
+                    <p class="feature-text">
+                        Members sign in with an email address and a password.
+                        The form shows clear error messages when the input is wrong.
+                    </p>
+                    <a class="btn btn-outline btn-small" href="login.html">Go to Login</a>
+                </div>
+                <!-- Feature: register -->
+                <div class="feature-card">
+                    <div class="feature-number">B</div>
+                    <h3 class="feature-title">Register Page</h3>
+                    <p class="feature-text">
+                        New voters create an account with their name, student ID,
+                        email, and password. A short password rule list helps the user.
+                    </p>
+                    <a class="btn btn-outline btn-small" href="register.html">Go to Register</a>
+                </div>
+                <!-- Feature: vote -->
+                <div class="feature-card">
+                    <div class="feature-number">C</div>
+                    <h3 class="feature-title">Voting Page</h3>
+                    <p class="feature-text">
+                        The ballot shows every candidate as a card.
+                        Click a card to select it, then press the submit button.
+                    </p>
+                    <a class="btn btn-outline btn-small" href="vote.html">Go to Vote</a>
+                </div>
+                <!-- Feature: add candidate -->
+                <div class="feature-card">
+                    <div class="feature-number">D</div>
+                    <h3 class="feature-title">Add Candidate Page</h3>
+                    <p class="feature-text">
+                        The election officer adds a new candidate by filling a form
+                        with a name, a slogan, and a short biography.
+                    </p>
+                    <a class="btn btn-outline btn-small" href="add-candidate.html">Go to Add Candidate</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Rules section ==================== -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="panel">
+                <h3>Voting Rules</h3>
+                <p>
+                    Each registered voter may send only one ballot in one election.
+                    Your choice stays secret, and the final count is published after
+                    the election closes. If you have a problem with your account,
+                    please contact the election office before the deadline.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Bottom call to action ==================== -->
+    <section class="cta-band">
+        <div class="container">
+            <h2>Ready to Vote?</h2>
+            <p>Log in with your student account and make your choice today.</p>
+            <a class="btn btn-secondary" href="login.html">Login and Continue</a>
+        </div>
+    </section>
+
+    <!-- ==================== Site footer ==================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- About block -->
+                <div>
+                    <div class="footer-title">About EMVS</div>
+                    <p class="footer-text">
+                        EMVS is the campus election website.
+                        It covers account registration, secure voting, and
+                        candidate management for student council elections.
+                    </p>
+                </div>
+                <!-- Quick links block -->
+                <div>
+                    <div class="footer-title">Quick Links</div>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="vote.html">Vote</a></li>
+                        <li><a href="register.html">Register</a></li>
+                    </ul>
+                </div>
+                <!-- Contact block -->
+                <div>
+                    <div class="footer-title">Contact</div>
+                    <p class="footer-text">
+                        Email: office@emvs.example<br>
+                        Office: Student Center, Room 101<br>
+                        Hours: Mon - Fri, 9:00 - 17:00
+                    </p>
+                </div>
+            </div>
+            <!-- Copyright line -->
+            <div class="footer-bottom">
+                <p>© 2026 EMVS Campus Election Office. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
