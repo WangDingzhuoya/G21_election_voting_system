@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");   //encryption
-const mongoUri = 'mongodb+srv://harry:harry@cluster0.4zcytsg.mongodb.net/'; //input the mongodb uri for mongoose
+const mongoUri = ''; //input your own mongodb uri to send the data to the database
 
 app.use(express.static('public'));
 
