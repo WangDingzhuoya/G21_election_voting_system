@@ -54,7 +54,7 @@ const Candidate = mongoose.model("Candidate", candidateSchema);
 
 const User = mongoose.model("User", userSchema);
 
-app.use(express.json());// convert login info
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.post('/register.html', async (req, res) => {
@@ -170,8 +170,6 @@ app.post('/add-candidate.html', async (req, res) => {
         res.status(500).send(err.message);
     }
 });
-
-
 
 app.use((error, req, res, next) => {
   console.error(error);
