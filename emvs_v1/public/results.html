@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!-- The counted result of one election, shown after the election closes -->
+<html lang="en">
+<head>
+    <!-- Page settings and shared stylesheet -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMVS | Results</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- ==================== Site header ==================== -->
+    <header class="site-header">
+        <div class="container">
+            <!-- Brand block with a CSS seal mark -->
+            <a class="brand" href="index.html">
+                <div class="seal">EMVS</div>
+                <div>
+                    <div class="brand-title">EMVS</div>
+                    <div class="brand-sub">Campus Voting System</div>
+                </div>
+            </a>
+            <!-- Main navigation links -->
+            <nav class="site-nav">
+                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link active" href="elections.html">Elections</a>
+                <a class="nav-link" href="vote.html">Vote</a>
+                <a class="nav-link" href="add-candidate.html">Add Candidate</a>
+                <a class="nav-link" href="register.html">Register</a>
+                <a class="nav-link" href="login.html">Login</a>
+                <a class="nav-link" href="/logout">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==================== Page title ==================== -->
+    <section class="section">
+        <div class="container">
+            <h1>Election Result</h1>
+            <p>
+                The count is calculated from the anonymous ballots after the
+                voting period closes. No ballot can be linked back to a voter.
+            </p>
+        </div>
+    </section>
+
+    <main>
+        <div class="container">
+            <!-- The result is filled in by the script at the end of this page -->
+            <div id="resultArea">
+                <p>Loading the result...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- ==================== Site footer ==================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- About block -->
+                <div>
+                    <div class="footer-title">About EMVS</div>
+                    <p class="footer-text">
+                        EMVS is the campus election website.
+                        It covers account registration, secure voting, and
+                        candidate management for student council elections.
+                    </p>
+                </div>
+                <!-- Quick links block -->
+                <div>
+                    <div class="footer-title">Quick Links</div>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="elections.html">Elections</a></li>
+                        <li><a href="register.html">Register</a></li>
+                    </ul>
+                </div>
+                <!-- Contact block -->
+                <div>
+                    <div class="footer-title">Contact</div>
+                    <p class="footer-text">
+                        Email: office@emvs.example<br>
+                        Office: Student Center, Room 101<br>
+                        Hours: Mon - Fri, 9:00 - 17:00
+                    </p>
+                </div>
+            </div>
+            <!-- Copyright line -->
+            <div class="footer-bottom">
+                <p>© 2026 EMVS Campus Election Office. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const resultArea = document.getElementById('resultArea');
+
+        // Take the election id from the page address
+        const electionId = new URLSearchParams(window.location.search).get('election');
+
+        // Build the table of counted results
+        function resultTable(data) {
+            const rows = data.results.map(result => {
+                const percent = data.totalBallots
+                    ? ((result.votes / data.totalBallots) * 100).toFixed(1)
+                    : 0;
+
+                return `
+                    <tr>
+                        <td>${result.name}</td>
+                        <td>${result.votes}</td>
+                        <td>${percent}%</td>
+                    </tr>
+                `;
+            }).join('');
+
+            return `
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Candidate</th>
+                            <th>Votes</th>
+                            <th>Share</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${rows}
+                    </tbody>
+                </table>
+                <p class="text-muted">Ballots cast: ${data.totalBallots}</p>
+            `;
+        }
+
+        // Load the election and show the result when it is closed
+        async function loadResult() {
+            try {
+                const response = await fetch('/api/elections/' + electionId);
+                const data = await response.json();
+
+                if (!response.ok) {
+                    resultArea.innerHTML = '<div class="alert alert-warning">'
+                        + data.message + '</div>';
+                    return;
+                }
+
+                // Vote counts are not published while the election is open
+                if (data.status !== 'closed') {
+                    resultArea.innerHTML = '<div class="alert alert-info">'
+                        + 'The result is not available until this election closes.'
+                        + '</div>';
+                    return;
+                }
+
+                let banner;
+
+                if (data.totalBallots === 0) {
+                    banner = '<div class="alert alert-warning">'
+                        + 'No ballots were cast in this election, so there is no winner.'
+                        + '</div>';
+                } else if (data.tie) {
+                    banner = '<div class="alert alert-warning">'
+                        + 'Tie - decision required. The tied candidates share the last seat.'
+                        + '</div>';
+                } else {
+                    banner = '<div class="alert alert-success">'
+                        + 'Elected: ' + data.winner + '</div>';
+                }
+
+                resultArea.innerHTML = `
+                    <h2 class="section-title">${data.election.title}</h2>
+                    ${banner}
+                    ${resultTable(data)}
+                `;
+            } catch (error) {
+                console.error('Error loading the result:', error);
+                resultArea.innerHTML = '<div class="alert alert-danger">'
+                    + 'Unable to load the result. Please try again.</div>';
+            }
+        }
+
+        // Run when the page loads
+        loadResult();
+    </script>
+</body>
+</html>

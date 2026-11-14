@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<!-- List of elections and the form used to create a new one -->
+<html lang="en">
+<head>
+    <!-- Page settings and shared stylesheet -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMVS | Elections</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- ==================== Site header ==================== -->
+    <header class="site-header">
+        <div class="container">
+            <!-- Brand block with a CSS seal mark -->
+            <a class="brand" href="index.html">
+                <div class="seal">EMVS</div>
+                <div>
+                    <div class="brand-title">EMVS</div>
+                    <div class="brand-sub">Campus Voting System</div>
+                </div>
+            </a>
+            <!-- Main navigation links -->
+            <nav class="site-nav">
+                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link active" href="elections.html">Elections</a>
+                <a class="nav-link" href="vote.html">Vote</a>
+                <a class="nav-link" href="add-candidate.html">Add Candidate</a>
+                <a class="nav-link" href="register.html">Register</a>
+                <a class="nav-link" href="login.html">Login</a>
+                <a class="nav-link" href="/logout">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==================== Page title ==================== -->
+    <section class="section">
+        <div class="container">
+            <h1>Elections</h1>
+            <p>
+                Every election is listed here with its voting period and its
+                current state. You can only vote in an election that is open.
+            </p>
+        </div>
+    </section>
+
+    <main>
+        <div class="container">
+
+            <!-- Administrator panel: hidden unless the logged-in account is an administrator -->
+            <div class="card" id="adminPanel" style="display: none; margin-bottom: 32px;">
+                <div class="card-header">
+                    <h2 class="card-title">Create a New Election</h2>
+                    <small>This function is only available to election administrators.</small>
+                </div>
+                <div class="card-body">
+                    <!-- Create election form -->
+                    <form class="form" action="create-election.html" method="post">
+
+                        <!-- Election title and description -->
+                        <div class="form-group">
+                            <label class="form-label" for="elec-title">Election Title *</label>
+                            <input class="form-input"
+                                   type="text"
+                                   id="elec-title"
+                                   name="title"
+                                   placeholder="2026 Student Council Election"
+                                   required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="elec-desc">Description</label>
+                            <textarea class="form-textarea"
+                                      id="elec-desc"
+                                      name="description"
+                                      rows="2"
+                                      placeholder="What this election is about"></textarea>
+                        </div>
+
+                        <!-- Voting period -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="elec-start">Opens At *</label>
+                                <input class="form-input"
+                                       type="datetime-local"
+                                       id="elec-start"
+                                       name="startAt"
+                                       required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="elec-end">Closes At *</label>
+                                <input class="form-input"
+                                       type="datetime-local"
+                                       id="elec-end"
+                                       name="endAt"
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn btn-primary" type="submit">Create Election</button>
+                            <a class="btn btn-outline" href="add-candidate.html">Add a Candidate</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- The list of elections is filled in by the script at the end of this page -->
+            <div id="electionList">
+                <p>Loading elections...</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ==================== Site footer ==================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- About block -->
+                <div>
+                    <div class="footer-title">About EMVS</div>
+                    <p class="footer-text">
+                        EMVS is the campus election website.
+                        It covers account registration, secure voting, and
+                        candidate management for student council elections.
+                    </p>
+                </div>
+                <!-- Quick links block -->
+                <div>
+                    <div class="footer-title">Quick Links</div>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="elections.html">Elections</a></li>
+                        <li><a href="register.html">Register</a></li>
+                    </ul>
+                </div>
+                <!-- Contact block -->
+                <div>
+                    <div class="footer-title">Contact</div>
+                    <p class="footer-text">
+                        Email: office@emvs.example<br>
+                        Office: Student Center, Room 101<br>
+                        Hours: Mon - Fri, 9:00 - 17:00
+                    </p>
+                </div>
+            </div>
+            <!-- Copyright line -->
+            <div class="footer-bottom">
+                <p>© 2026 EMVS Campus Election Office. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const electionList = document.getElementById('electionList');
+        const adminPanel = document.getElementById('adminPanel');
+
+        // Show the create form only to an election administrator
+        async function checkRole() {
+            try {
+                const response = await fetch('/api/me');
+                const me = await response.json();
+
+                if (me.role === 'admin') {
+                    adminPanel.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error checking the role:', error);
+            }
+        }
+
+        // Turn one election into a card with its state and its button
+        function electionCard(election) {
+            const period = new Date(election.startAt).toLocaleString()
+                + ' - ' + new Date(election.endAt).toLocaleString();
+
+            let badge = '<span class="badge badge-soon">Coming Soon</span>';
+            let button = '<span class="text-muted">Not open yet</span>';
+
+            if (election.status === 'open') {
+                badge = '<span class="badge badge-open">Voting Open</span>';
+                button = '<a class="btn btn-primary btn-small" href="vote.html?election='
+                    + election.id + '">Vote Now</a>';
+            }
+
+            if (election.status === 'closed') {
+                badge = '<span class="badge badge-done">Closed</span>';
+                button = '<a class="btn btn-outline btn-small" href="results.html?election='
+                    + election.id + '">View Results</a>';
+            }
+
+            return `
+                <div class="card" style="margin-bottom: 16px;">
+                    <div class="card-body">
+                        <div class="flex-between">
+                            <div>
+                                <h3 class="card-title">${election.title}</h3>
+                                <p class="text-muted">${election.description || ''}</p>
+                                <p class="text-muted">Voting period: ${period}</p>
+                            </div>
+                            ${badge}
+                        </div>
+                        <div class="form-actions" style="margin-top: 16px;">
+                            ${button}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Load the elections from the server
+        async function loadElections() {
+            try {
+                const response = await fetch('/api/elections');
+                const elections = await response.json();
+
+                electionList.innerHTML = '';
+
+                if (elections.length === 0) {
+                    electionList.innerHTML = '<p>No elections have been created yet.</p>';
+                    return;
+                }
+
+                elections.forEach(election => {
+                    electionList.innerHTML += electionCard(election);
+                });
+            } catch (error) {
+                console.error('Error loading elections:', error);
+                electionList.innerHTML = '<p>Unable to load the elections. Please try again.</p>';
+            }
+        }
+
+        // Run when the page loads
+        checkRole();
+        loadElections();
+    </script>
+</body>
+</html>

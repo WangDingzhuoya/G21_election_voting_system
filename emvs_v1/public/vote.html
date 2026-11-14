@@ -24,10 +24,12 @@
             <!-- Main navigation links -->
             <nav class="site-nav">
                 <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="elections.html">Elections</a>
                 <a class="nav-link active" href="vote.html">Vote</a>
                 <a class="nav-link" href="add-candidate.html">Add Candidate</a>
                 <a class="nav-link" href="register.html">Register</a>
                 <a class="nav-link" href="login.html">Login</a>
+                <a class="nav-link" href="/logout">Logout</a>
             </nav>
         </div>
     </header>
@@ -49,19 +51,14 @@
         <div class="container">
 
             <!-- Election information card -->
-            <div class="card" style="margin-bottom: 24px;">
+            <div class="card" style="margin-bottom: 24px;" id="electionInfo">
                 <div class="card-body">
                     <div class="flex-between">
                         <div>
-                            <h2 class="card-title">2026 Student Council Election</h2>
-                            <p class="text-muted">
-                                Position: Council President |
-                                Candidates: 6 |
-                                Deadline: December 15, 2026 |
-                                Your status: ready to vote
-                            </p>
+                            <h2 class="card-title">Loading election...</h2>
+                            <p class="text-muted"></p>
                         </div>
-                        <span class="badge badge-open">Voting Open</span>
+                        <span class="badge badge-soon">Loading</span>
                     </div>
                 </div>
             </div>
@@ -70,7 +67,7 @@
             <div class="alert alert-info">
                 <strong>Before You Vote</strong>
                 Select exactly one candidate. After you submit, your ballot
-                cannot be changed. Keep the receipt code in a safe place.
+                cannot be changed. Your choice is stored without your name.
             </div>
 
             <!-- Quote from the election officer -->
@@ -88,142 +85,13 @@
             </div>
 
             <!-- The ballot form holds all candidate cards -->
-            <form class="form" action="#" method="post">
+            <form class="form" action="/vote.html" method="post">
 
-                <div class="ballot-grid">
+                <!-- The election that this ballot belongs to -->
+                <input type="hidden" id="electionId" name="electionId">
 
-                    <!-- Candidate 1 -->
-                    <label class="candidate-card">
-                        <input type="radio" name="candidate" value="alice" required>
-                        <span class="stamp">Selected</span>
-                        <div class="candidate-top">
-                            <div class="candidate-avatar">AJ</div>
-                            <div>
-                                <div class="candidate-name">Alice Johnson</div>
-                                <div class="candidate-role">Year 3 - Computer Science</div>
-                            </div>
-                        </div>
-                        <p class="candidate-text">
-                            Alice wants longer library hours and more power
-                            sockets in the study rooms. She has led the coding
-                            club for two years.
-                        </p>
-                        <div class="candidate-tags">
-                            <span class="tag">Library</span>
-                            <span class="tag">Study Space</span>
-                        </div>
-                    </label>
-
-                    <!-- Candidate 2 -->
-                    <label class="candidate-card">
-                        <input type="radio" name="candidate" value="bob">
-                        <span class="stamp">Selected</span>
-                        <div class="candidate-top">
-                            <div class="candidate-avatar">BW</div>
-                            <div>
-                                <div class="candidate-name">Brian Wong</div>
-                                <div class="candidate-role">Year 4 - Business</div>
-                            </div>
-                        </div>
-                        <p class="candidate-text">
-                            Brian plans to cut food prices at the canteen and
-                            create a student discount card for local shops
-                            near the campus.
-                        </p>
-                        <div class="candidate-tags">
-                            <span class="tag">Food</span>
-                            <span class="tag">Discounts</span>
-                        </div>
-                    </label>
-
-                    <!-- Candidate 3 -->
-                    <label class="candidate-card">
-                        <input type="radio" name="candidate" value="carol">
-                        <span class="stamp">Selected</span>
-                        <div class="candidate-top">
-                            <div class="candidate-avatar">CL</div>
-                            <div>
-                                <div class="candidate-name">Carol Lopez</div>
-                                <div class="candidate-role">Year 2 - Art and Design</div>
-                            </div>
-                        </div>
-                        <p class="candidate-text">
-                            Carol wants a bigger student art show every term
-                            and free printing for student club posters in
-                            the media room.
-                        </p>
-                        <div class="candidate-tags">
-                            <span class="tag">Art</span>
-                            <span class="tag">Clubs</span>
-                        </div>
-                    </label>
-
-                    <!-- Candidate 4 -->
-                    <label class="candidate-card">
-                        <input type="radio" name="candidate" value="david">
-                        <span class="stamp">Selected</span>
-                        <div class="candidate-top">
-                            <div class="candidate-avatar">DK</div>
-                            <div>
-                                <div class="candidate-name">David Kim</div>
-                                <div class="candidate-role">Year 3 - Engineering</div>
-                            </div>
-                        </div>
-                        <p class="candidate-text">
-                            David focuses on lab safety and wants a free bike
-                            repair station at the east gate for students who
-                            cycle to class.
-                        </p>
-                        <div class="candidate-tags">
-                            <span class="tag">Lab</span>
-                            <span class="tag">Bikes</span>
-                        </div>
-                    </label>
-
-                    <!-- Candidate 5 -->
-                    <label class="candidate-card">
-                        <input type="radio" name="candidate" value="emma">
-                        <span class="stamp">Selected</span>
-                        <div class="candidate-top">
-                            <div class="candidate-avatar">EN</div>
-                            <div>
-                                <div class="candidate-name">Emma Novak</div>
-                                <div class="candidate-role">Year 1 - Languages</div>
-                            </div>
-                        </div>
-                        <p class="candidate-text">
-                            Emma wants more language exchange evenings and a
-                            quiet room for students who need a calm place
-                            to study.
-                        </p>
-                        <div class="candidate-tags">
-                            <span class="tag">Languages</span>
-                            <span class="tag">Wellbeing</span>
-                        </div>
-                    </label>
-
-                    <!-- Candidate 6 -->
-                    <label class="candidate-card">
-                        <input type="radio" name="candidate" value="frank">
-                        <span class="stamp">Selected</span>
-                        <div class="candidate-top">
-                            <div class="candidate-avatar">FM</div>
-                            <div>
-                                <div class="candidate-name">Frank Moore</div>
-                                <div class="candidate-role">Year 4 - Sports Science</div>
-                            </div>
-                        </div>
-                        <p class="candidate-text">
-                            Frank plans to keep the gym open later at night
-                            and to add more team sports for first-year
-                            students.
-                        </p>
-                        <div class="candidate-tags">
-                            <span class="tag">Sports</span>
-                            <span class="tag">Gym</span>
-                        </div>
-                    </label>
-
+                <div class="ballot-grid" id="ballotGrid">
+                    <p>Loading candidates...</p>
                 </div>
 
                 <!-- Ballot summary and final submit -->
@@ -236,7 +104,7 @@
                     </div>
                     <div class="btn-row">
                         <button class="btn btn-primary" type="submit">Submit My Ballot</button>
-                        <a class="btn btn-outline" href="index.html">Leave Without Voting</a>
+                        <a class="btn btn-outline" href="elections.html">Leave Without Voting</a>
                     </div>
                 </div>
 
@@ -246,9 +114,9 @@
             <div class="panel" style="margin-top: 24px;">
                 <h3>After You Submit</h3>
                 <p>
-                    The system will show a receipt code on the next screen.
-                    That code proves that your ballot entered the box, but it
-                    does not show your choice, so your vote stays secret.
+                    The system stores your choice without your name, so nobody
+                    can find out how you voted. The count is published after
+                    the election closes.
                 </p>
             </div>
 
@@ -294,5 +162,141 @@
         </div>
     </footer>
 
+
+    <script>
+        // Get the candidate display area
+        const ballotGrid = document.getElementById('ballotGrid');
+
+        // Take the election id from the page address
+        const electionId = new URLSearchParams(window.location.search).get('election');
+        document.getElementById('electionId').value = electionId;
+
+        // Show the name and the voting period of the chosen election
+        async function loadElectionInfo() {
+            try {
+                const response = await fetch('/api/elections/' + electionId);
+                const data = await response.json();
+
+                if (!response.ok) {
+                    document.getElementById('electionInfo').innerHTML =
+                        '<div class="card-body"><p class="text-muted">'
+                        + data.message + '</p></div>';
+                    return;
+                }
+
+                const period = new Date(data.election.startAt).toLocaleString()
+                    + ' - ' + new Date(data.election.endAt).toLocaleString();
+
+                let badge = '<span class="badge badge-soon">Coming Soon</span>';
+
+                if (data.status === 'open') {
+                    badge = '<span class="badge badge-open">Voting Open</span>';
+                }
+
+                if (data.status === 'closed') {
+                    badge = '<span class="badge badge-done">Closed</span>';
+                }
+
+                document.getElementById('electionInfo').innerHTML = `
+                    <div class="card-body">
+                        <div class="flex-between">
+                            <div>
+                                <h2 class="card-title">${data.election.title}</h2>
+                                <p class="text-muted">
+                                    ${data.election.description || ''}<br>
+                                    Voting period: ${period}<br>
+                                    Candidates: ${data.candidates.length}
+                                </p>
+                            </div>
+                            ${badge}
+                        </div>
+                    </div>
+                `;
+            } catch (error) {
+                console.error('Error loading the election:', error);
+            }
+        }
+
+        // Load candidates from the backend
+        async function loadCandidates() {
+            try {
+                const response = await fetch('/api/candidates?electionId=' + electionId);
+
+                if (!response.ok) {
+                    throw new Error('Failed to load candidates');
+                }
+
+                const candidates = await response.json();
+
+                // Clear the loading message
+                ballotGrid.innerHTML = '';
+
+                if (candidates.length === 0) {
+                    ballotGrid.innerHTML = '<p>No candidates are available.</p>';
+                    return;
+                }
+
+                // Display each candidate
+                candidates.forEach(candidate => {
+                    const card = document.createElement('label');
+                    card.className = 'candidate-card';
+
+                    const initials = candidate.candidateName
+                        .split(' ')
+                        .map(name => name[0])
+                        .join('')
+                        .toUpperCase();
+
+                    card.innerHTML = `
+                        <input
+                            type="radio"
+                            name="candidateId"
+                            value="${candidate._id}"
+                            required
+                        >
+
+                        <span class="stamp">Selected</span>
+
+                        <div class="candidate-top">
+                            <div class="candidate-avatar">${initials}</div>
+
+                            <div>
+                                <div class="candidate-name">
+                                    ${candidate.candidateName}
+                                </div>
+
+                                <div class="candidate-role">
+                                    Year ${candidate.year || 'N/A'} -
+                                    ${candidate.department}
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="candidate-text">
+                            ${candidate.biography || candidate.slogan || ''}
+                        </p>
+
+                        <div class="candidate-tags">
+                            <span class="tag">
+                                ${candidate.groupName || 'Independent'}
+                            </span>
+                        </div>
+                    `;
+
+                    ballotGrid.appendChild(card);
+                });
+
+            } catch (error) {
+                console.error(error);
+                ballotGrid.innerHTML =
+                    '<p>Unable to load candidates. Please try again.</p>';
+            }
+        }
+
+        // Run when the page loads
+        loadElectionInfo();
+        loadCandidates();
+    </script>
 </body>
 </html>
+

@@ -24,10 +24,12 @@
             <!-- Main navigation links -->
             <nav class="site-nav">
                 <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="elections.html">Elections</a>
                 <a class="nav-link" href="vote.html">Vote</a>
                 <a class="nav-link active" href="add-candidate.html">Add Candidate</a>
                 <a class="nav-link" href="register.html">Register</a>
                 <a class="nav-link" href="login.html">Login</a>
+                <a class="nav-link" href="/logout">Logout</a>
             </nav>
         </div>
     </header>
@@ -65,7 +67,15 @@
                     </div>
                     <div class="card-body">
                         <!-- Add candidate form -->
-                        <form class="form" action="#" method="post">
+                        <form class="form" action="add-candidate.html" method="post">
+
+                            <!-- The election that this candidate runs in -->
+                            <div class="form-group">
+                                <label class="form-label" for="cand-election">Election *</label>
+                                <select class="form-select" id="cand-election" name="electionId" required>
+                                    <option value="">Loading elections...</option>
+                                </select>
+                            </div>
 
                             <!-- Candidate name and student ID -->
                             <div class="form-row">
@@ -257,6 +267,7 @@
                 <h2 class="section-title">Current Candidates</h2>
                 <p class="section-subtitle">
                     The table below shows the people who are already on the ballot.
+                    A candidate that is still a draft does not appear here.
                 </p>
                 <!-- Candidate data table -->
                 <table class="data-table">
@@ -269,60 +280,15 @@
                             <th>Status</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <!-- The rows are filled in by the script at the end of this page -->
+                    <tbody id="candidateRows">
                         <tr>
-                            <td>Alice Johnson</td>
-                            <td>Year 3</td>
-                            <td>Computer Science</td>
-                            <td>More power for study time</td>
-                            <td><span class="badge badge-open">Published</span></td>
-                        </tr>
-                        <tr>
-                            <td>Brian Wong</td>
-                            <td>Year 4</td>
-                            <td>Business</td>
-                            <td>Good food at low prices</td>
-                            <td><span class="badge badge-open">Published</span></td>
-                        </tr>
-                        <tr>
-                            <td>Carol Lopez</td>
-                            <td>Year 2</td>
-                            <td>Art and Design</td>
-                            <td>A campus full of color</td>
-                            <td><span class="badge badge-open">Published</span></td>
-                        </tr>
-                        <tr>
-                            <td>David Kim</td>
-                            <td>Year 3</td>
-                            <td>Engineering</td>
-                            <td>Safe labs, easy bikes</td>
-                            <td><span class="badge badge-open">Published</span></td>
-                        </tr>
-                        <tr>
-                            <td>Emma Novak</td>
-                            <td>Year 1</td>
-                            <td>Languages</td>
-                            <td>Speak more, stress less</td>
-                            <td><span class="badge badge-soon">Draft</span></td>
-                        </tr>
-                        <tr>
-                            <td>Frank Moore</td>
-                            <td>Year 4</td>
-                            <td>Sports Science</td>
-                            <td>Play more, live better</td>
-                            <td><span class="badge badge-open">Published</span></td>
+                            <td colspan="5">Loading candidates...</td>
                         </tr>
                     </tbody>
                 </table>
-                <!-- Pagination under the table -->
-                <nav class="pagination">
-                    <a class="page-link" href="#">Prev</a>
-                    <a class="page-link active" href="#">1</a>
-                    <a class="page-link" href="#">2</a>
-                    <a class="page-link" href="#">3</a>
-                    <a class="page-link" href="#">Next</a>
-                </nav>
             </div>
+
 
         </div>
     </main>
@@ -365,6 +331,64 @@
             </div>
         </div>
     </footer>
+    <script>
+        const electionSelect = document.getElementById('cand-election');
+        const candidateRows = document.getElementById('candidateRows');
+
+        // Fill the election list in the form
+        async function loadElections() {
+            try {
+                const response = await fetch('/api/elections');
+                const elections = await response.json();
+
+                electionSelect.innerHTML = '<option value="">Choose an election</option>';
+
+                elections.forEach(election => {
+                    const option = document.createElement('option');
+                    option.value = election.id;
+                    option.textContent = election.title;
+                    electionSelect.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Error loading elections:', error);
+                electionSelect.innerHTML = '<option value="">Unable to load the elections</option>';
+            }
+        }
+
+        // Fill the table with the candidates that are on the ballot
+        async function loadCandidates() {
+            try {
+                const response = await fetch('/api/candidates');
+                const candidates = await response.json();
+
+                candidateRows.innerHTML = '';
+
+                if (candidates.length === 0) {
+                    candidateRows.innerHTML = '<tr><td colspan="5">'
+                        + 'No candidate has been added yet.</td></tr>';
+                    return;
+                }
+
+                candidates.forEach(candidate => {
+                    candidateRows.innerHTML += `
+                        <tr>
+                            <td>${candidate.candidateName}</td>
+                            <td>Year ${candidate.year || '-'}</td>
+                            <td>${candidate.department}</td>
+                            <td>${candidate.slogan || '-'}</td>
+                            <td><span class="badge badge-open">Published</span></td>
+                        </tr>
+                    `;
+                });
+            } catch (error) {
+                console.error('Error loading candidates:', error);
+            }
+        }
+
+        // Run when the page loads
+        loadElections();
+        loadCandidates();
+    </script>
 
 </body>
 </html>
