@@ -63,9 +63,19 @@ The first run downloads a temporary MongoDB binary for the test database (a few 
 - **Administrator**: `admin@emvs.edu` / `admin1234` (created automatically at first startup)
 - **Voter**: register your own account on the Register page
 
-## Known Limitations (planned future work)
+## Scope of This Release
 
-- No email verification, receipt codes, CSV roll import, audit log, or results export yet
-- Single-seat elections only (one choice per ballot)
-- Two roles only (voter and administrator); the auditor and system administrator roles are not built
-- A tie is reported but not resolved: the election stays without an elected candidate until an administrator decides (FR21)
+This is the finished build of the project. It implements the voting main chain
+end to end: accounts and roles, elections and candidates, one vote per member
+per election, a secret ballot, and the result published after voting closes.
+
+The boundary of that scope is stated here so that nothing is implied that the
+build does not do:
+
+- Two roles are implemented: voter and administrator. The auditor and system
+  administrator roles are not part of this build.
+- Elections are single-seat: one choice per ballot.
+- A tie on the last seat is reported rather than resolved, so the election
+  stays without an elected candidate until an administrator decides (FR21).
+- Email verification, receipt codes, CSV roll import, audit logging and
+  results export are not part of this build.
