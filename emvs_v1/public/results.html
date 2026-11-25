@@ -159,8 +159,9 @@
                         + 'No ballots were cast in this election, so there is no winner.'
                         + '</div>';
                 } else if (data.tie) {
+                    // FR21: when the tied candidates contest the last seat, none of them is elected
                     banner = '<div class="alert alert-warning">'
-                        + 'Tie - decision required. The tied candidates share the last seat.'
+                        + 'Tie - decision required. The tied candidates contest the last seat, so none of them is elected.'
                         + '</div>';
                 } else {
                     banner = '<div class="alert alert-success">'

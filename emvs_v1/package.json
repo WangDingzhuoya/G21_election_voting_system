@@ -4,7 +4,8 @@
   "description": "Election Management and Voting System",
   "author": "Group21",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "test": "node test/e2e.js"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
@@ -12,5 +13,8 @@
     "express-session": "^1.19.0",
     "mongoose": "6.13.8",
     "nodemon": "2.0.22"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^11.3.0"
   }
 }
