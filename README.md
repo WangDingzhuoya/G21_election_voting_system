@@ -79,3 +79,7 @@ build does not do:
   stays without an elected candidate until an administrator decides (FR21).
 - Email verification, receipt codes, CSV roll import, audit logging and
   results export are not part of this build.
+
+`REQUIREMENTS_STATUS.md` in this folder lists all 30 functional and all 15
+non-functional requirements with the priority the group set and their status in
+this build, so the boundary above can be checked against the specification.
